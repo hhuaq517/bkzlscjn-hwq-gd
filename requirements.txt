@@ -1,4 +1,6 @@
-# 依赖按技能分段。六个技能里只有 4 个需要额外包，
+# 依赖按技能分段。七个技能里只有 4 个需要额外装包
+# （exam-pdf-render / exam-situation-handbook / exam-paper-restore / exam-docx-export）。
+# exam-prep-pdf 复用 exam-pdf-render 的依赖（pymupdf + playwright），无需另装；
 # mock-exam-paper 与 exam-prep-suite 是纯文档技能，**零依赖**。
 #
 # 建议单建 venv（不要污染系统环境）：

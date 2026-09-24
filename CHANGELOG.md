@@ -8,7 +8,7 @@
 
 ### 内容
 
-收录六个协同工作的技能，构成一条完整的备考资料生产线：
+收录七个协同工作的技能，构成一条完整的备考资料生产线：
 
 - **`exam-prep-suite`** — 总入口。判线、路由、交付铁律、跨产线共性坑。
 - **`exam-pdf-render`** — 共享渲染层。HTML → 印刷级 PDF，双引擎（Playwright / 无头浏览器），
@@ -25,7 +25,8 @@
 
 - 补 `README.md`（安装 / 环境 / 快速开始 / 配色 / 交付铁律 / 常见问题）、
   `LICENSE`（MIT + 附加说明）、`.gitignore`、`requirements.txt`（按技能分段并标注可选依赖）。
-- `requirements.txt` 区分「必需」与「可选」，并注明 `mock-exam-paper` / `exam-prep-suite` 零依赖。
+- `requirements.txt` 区分「必需」与「可选」，并注明 `exam-prep-pdf` 复用渲染层依赖、
+  `mock-exam-paper` / `exam-prep-suite` 零依赖。
 - `.gitignore` 一律按文件名 / 目录名精确排除，**不使用 `*.html` / `*.png` / `*.pdf` 整类规则**
   —— 整类规则会静默吞掉模板与素材，且 `git add -A` 不报错。
 - 中间产物默认落在系统临时目录，仓库树内不留任何运行产物。
@@ -65,7 +66,7 @@ skills/exam-situation-handbook/scripts/parse_positions.py
 
 | 改前 | 改后 | 原因 |
 |---|---|---|
-| 根目录 `SKILL.md`（总纲） | `skills/exam-prep-suite/SKILL.md` | 让六个技能在 `skills/` 下平级并列，安装只需一条 `cp -R skills/* ~/.workbuddy-ai/skills/`。**文件内容除下述去标识化外未改。** |
+| 根目录 `SKILL.md`（总纲） | `skills/exam-prep-suite/SKILL.md` | 把总纲移入 `skills/`，与原有六个子技能平级并列（`skills/` 下共 **7 个**技能目录），安装只需一条 `cp -R skills/* ~/.workbuddy-ai/skills/`。**文件内容除下述去标识化外未改。** |
 
 ### B. 去标识化（内部人名 → 通用称呼）
 
