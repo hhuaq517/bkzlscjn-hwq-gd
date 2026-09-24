@@ -1,0 +1,46 @@
+MIT License
+
+Copyright (c) 2026 黄文钦 (hwq)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 附加说明（Additional Notes）
+
+1. **商标与品牌标识不在授权范围内。**
+   本仓库文档中出现的机构名称、品牌标识、页眉署名口径等，仅为说明交付规范而引用，
+   **不随本许可授权**。使用者不得据此主张任何商标权或品牌使用权。
+
+2. **不附带任何考试真题原卷、招考数据或职位表。**
+   文中提到的试卷样例、考情数据、公告原文、职位表字段等，仅作为格式与口径示例；
+   使用者如需相关素材，应自行通过合法渠道取得，并自行承担内容合规责任。
+
+3. **不附带字体文件。**
+   文中提到的字体使用规范仅作说明；本仓库不含任何字体文件。
+   如使用商业授权字体，请自行取得相应授权。
+
+4. **不附带任何第三方平台凭据。**
+   部分脚本演示了公开网页与公开附件的抓取方式（自定义 User-Agent、Referer、
+   相对路径补全等通用 HTTP 处理）。使用者须自行确认目标站点的服务条款与 robots 规则，
+   并自行承担相应责任。本仓库不附带、也不要求任何账号、Cookie 或 API 凭据。
+
+5. **适用范围。**
+   本许可覆盖本仓库内的文档与脚本。使用者基于本规范产出的成品内容，
+   其版权与合规责任由使用者自行承担。

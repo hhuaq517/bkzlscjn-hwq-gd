@@ -1,0 +1,49 @@
+# 依赖按技能分段。六个技能里只有 4 个需要额外包，
+# mock-exam-paper 与 exam-prep-suite 是纯文档技能，**零依赖**。
+#
+# 建议单建 venv（不要污染系统环境）：
+#   python3 -m venv ~/.venvs/exam-prep && source ~/.venvs/exam-prep/bin/activate
+#   pip install -r requirements.txt
+#   playwright install chromium          # A 线渲染引擎，装完 playwright 必须再跑这一句
+
+# ── exam-pdf-render（共享渲染层）─────────────────────────────
+pymupdf>=1.24.3        # 目录页码回填（search_for）、PDF 合并、巡检 get_text("blocks")
+                       # ⚠️ 必须 >=1.24.3：脚本写的是 `import pymupdf as fitz`，
+                       #    旧版只有 `import fitz` 这个入口
+playwright>=1.40       # A 线 render.py：Chromium 渲染 + header/footer 模板 + 原生页码
+                       # 装完记得 `playwright install chromium`
+
+# ── exam-prep-pdf（备考讲义 / 题本）──────────────────────────
+# 依赖与上面完全相同（pymupdf + playwright），装了就不用重复装。
+
+# ── exam-situation-handbook（考情手册）───────────────────────
+pypdfium2>=4.0         # check_fill.py：把 PDF 渲成位图做像素法填充率巡检
+                       # ⚠️ 只用来渲染，**不要**拿它抽文本做红线校验——
+                       #    它不做 text run 合并，带字距的 CJK 页脚会被逐字拆开
+numpy>=1.21            # check_fill.py：位图行扫描
+openpyxl>=3.0          # parse_positions.py：读 .xlsx 职位表
+xlrd>=2.0              # parse_positions.py：读 .xls 职位表
+# fetch_attachments.py / overflow_check.py **只用标准库**
+# （urllib / re / json / subprocess / tempfile），无需额外安装。
+
+# ── exam-paper-restore（真题还原）────────────────────────────
+# vision_ocr.py 走 macOS 系统 Vision 框架，仅 macOS 可用。
+pyobjc-framework-Vision>=9.0    # OCR 主接口
+pyobjc-framework-Quartz>=9.0    # CGImageSource 读图 / 位图上下文
+Pillow>=9.0                     # 图片预处理与裁剪
+
+# ── exam-docx-export（Word 导出）─────────────────────────────
+python-docx>=1.1       # docx_to_pdf.py / renumber_figs.py / wordgeom.py 读写 .docx
+reportlab>=4.0         # docx_to_pdf.py：离线生成 PDF，两遍编译回填目录页码
+lxml>=4.9              # html2md.py：解析 HTML 转 Markdown
+# pymupdf 同上（build_docx.py 渲染 SVG→PNG、fix_docx.py 补位图回退）
+# build_docx.py 另需 editor_sdk（随 WorkBuddy / CodeBuddy 内置的
+# tencent-local-office-edit 技能提供，路径可用环境变量 EXAM_EDSDK 覆盖）
+
+# ── mock-exam-paper / exam-prep-suite ───────────────────────
+# 零依赖。前者只有 SKILL.md（组卷规范 + 复检流程），后者是总入口路由文档。
+
+# ── 本机核对方式（包的导入名常与包名不同，别只信 `pip list`）──
+#   python -c "import pymupdf; print(pymupdf.__version__)"
+#   python -c "import playwright, docx, reportlab, lxml, numpy, openpyxl, xlrd, PIL; print('ok')"
+#   python -c "import pypdfium2; print('ok')"

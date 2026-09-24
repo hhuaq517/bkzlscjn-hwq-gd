@@ -1,0 +1,90 @@
+# ══════════════════════════════════════════════════════════════
+#  约定：一律按「文件名 / 目录名」精确排除，
+#        **禁止**使用 `*.html` / `*.png` / `*.pdf` 这类整类规则 ——
+#        本仓库的 SKILL.md 里引用着大量示例文件名，
+#        整类规则会连模板与素材一起吞掉，且 `git add -A` **不报错**。
+#        提交后务必核对：`git diff --cached --name-only | wc -l` == 预期文件数
+# ══════════════════════════════════════════════════════════════
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+# 注意：**不要忽略 `build/`**。它是 Python 打包的惯例目录名，但本套技能的
+#       图表与中间产物目录也叫 build/（`html2md.py` / `build_docx.py` 的 EXAM_BUILD），
+#       一旦写成 `build/` 整目录规则，将来有人把生成器脚本放进 build/ 就会被静默漏掉。
+#       本套脚本的中间产物默认落在系统临时目录，仓库里不需要这条规则。
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ── 虚拟环境 ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ── 测试与类型检查缓存 ────────────────────────────────────────
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── 运行产物（各脚本默认落点）─────────────────────────────────
+# A 线 / B 线渲染出的 PDF 与中间件
+*_cover.html
+*_cover.pdf
+*_body.html
+*_body.pdf
+*_body_pass1.pdf
+*_fix/
+check.html
+
+# exam-pdf-render/scripts/check.py
+overview.pdf
+
+# exam-docx-export
+manual.md
+*.bak.docx
+_titlepg_repack/
+_titlepg_out.docx
+
+# exam-situation-handbook
+att/
+summary.json
+
+# 交付成品（一项目一文件夹的产物，不进库）
+*_交付/
+out/
+
+# ── 编辑器 / 系统 ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── 敏感信息（本仓库不含任何凭据，防误提交）───────────────────
+.env
+.env.*
+*.token
+*.key
+*credentials*.json
+token.txt
